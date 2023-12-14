@@ -26,9 +26,12 @@ export const ValidationsSchema = yup.object().shape({
     .mixed()
     .required("Required")
     .test("fileSize", "The file is too large", (files: any) => {
-      return files && files.size <= 500000;
+      return files && files.size <= 5000000;
     })
     .test("type", "We only support jpeg or jpg", (files: any) => {
-      return files && files.type === ("image/jpeg" || "image/jpg");
-    }),
+      return (
+        files && (files.type === "image/jpeg" || files.type === "image/jpg")
+      );
+    })
+    
 });
